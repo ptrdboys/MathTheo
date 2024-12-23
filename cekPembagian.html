@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Teorema Pembagian</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: radial-gradient(circle at 50% 50%, #2c3e50, #34495e, #1abc9c);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 50px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 70%;
+      max-width: 500px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #f1c40f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(241, 196, 15, 0.7);
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ecf0f1;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #f1c40f;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 15;
+      transition: color 0.3s ease;
+    }
+
+    .cek-button {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .cek-button:hover {
+      background-color: #f1c40f;
+      color: #2c3e50;
+    }
+
+    .back-button:hover {
+      color: #f1c40f;
+    }
+
+    .input-section {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px; /* Menambah jarak antar kolom */
+      margin-bottom: 20px; /* Menambah jarak bawah */
+    }
+
+    .input-section label {
+      font-size: 1rem;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin-bottom: 8px; /* Menambah jarak bawah label */
+    }
+
+    .input-section input {
+      font-size: 1rem;
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #f1c40f;
+      color: #2c3e50;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .result span {
+      font-weight: bold;
+    }
+
+    .background-math {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .background-math span {
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.2);
+      animation: float 15s infinite;
+    }
+
+    .orb {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #3498db, #2c3e50);
+      border-radius: 50%;
+      filter: blur(50px);
+      animation: orb-move 20s infinite;
+      z-index: 1;
+    }
+
+    .orb:nth-child(1) {
+      top: 10%;
+      left: 10%;
+    }
+
+    .orb:nth-child(2) {
+      top: 70%;
+      left: 70%;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    @keyframes orb-move {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(30px, -30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+  </style>
+  <script>
+    function checkDivision() {
+      const dividend = parseInt(document.getElementById('dividend').value);
+      const divisor = parseInt(document.getElementById('divisor').value);
+      const result = document.getElementById('divisionResult');
+
+      if (isNaN(dividend) || isNaN(divisor) || divisor === 0) {
+        result.innerHTML = "Masukkan angka yang valid. Divisor tidak boleh nol.";
+        return;
+      }
+
+      const quotient = Math.floor(dividend / divisor);
+      const remainder = dividend % divisor;
+
+      result.innerHTML = `<span>Hasil bagi:</span> ${quotient}, <span>Sisa:</span> ${remainder}`;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Back button -->
+  <button class="back-button" onclick="window.location.href='algoritma_pembagian.html'">&#8592; back</button>
+
+  <div class="orb"></div>
+  <div class="orb"></div>
+
+  <div class="container">
+    <h1>Teorema Pembagian</h1>
+    <p>Masukkan angka untuk melakukan pembagian dan mengetahui hasil bagi serta sisa pembagian.</p>
+
+    <div class="input-section">
+      <div>
+        <label for="dividend">Masukkan angka pembilang:</label>
+        <input type="number" id="dividend" placeholder="Masukkan pembilang...">
+      </div>
+      <div>
+        <label for="divisor">Masukkan angka penyebut:</label>
+        <input type="number" id="divisor" placeholder="Masukkan penyebut...">
+      </div>
+    </div>
+
+    <button class="cek-button" onclick="checkDivision()">Cek Pembagian</button>
+
+    <div id="divisionResult" class="result"></div>
+
+
+    <div class="footer">
+      <p>Ingin belajar lebih banyak? Kunjungi kami di <a href="index.html">Theo Math</a></p>
+    </div>
+      <!-- Tombol Cek -->
+      <button class="cek-button" onclick="window.location.href='soalPembagian.html'">SOAL</button>
+  </div>
+
+  <div class="background-math">
+    <span style="top: 10%; left: 20%;">3.14</span>
+    <span style="top: 30%; left: 40%;">&#x221E;</span>
+    <span style="top: 50%; left: 10%;">x + y = z</span>
+    <span style="top: 70%; left: 50%;">&#x221A;25</span>
+    <span style="top: 20%; left: 70%;">e<sup>i&#x3C0;</sup> + 1 = 0</span>
+    <span style="top: 60%; left: 80%;">&#x3C3;</span>
+    <span style="top: 15%; left: 35%;">y = mx + b</span>
+    <span style="top: 45%; left: 65%;">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span>
+    <span style="top: 75%; left: 25%;">log<sub>10</sub>100</span>
+    <span style="top: 85%; left: 55%;">f(x) = x<sup>2</sup></span>
+  </div>
+
+</body>
+</html>

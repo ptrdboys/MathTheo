@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Teorema Bilangan Prima</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: radial-gradient(circle at 50% 50%, #2c3e50, #34495e, #1abc9c);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 50px 70px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 800px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #f1c40f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(241, 196, 15, 0.7);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      text-align: left;
+      margin: 0 auto;
+      display: inline-block;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ecf0f1;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #f1c40f;
+    }
+
+    .background-math {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .background-math span {
+      position: absolute;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.2);
+      animation: float 15s infinite;
+    }
+
+    .orb {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #3498db, #2c3e50);
+      border-radius: 50%;
+      filter: blur(50px);
+      animation: orb-move 20s infinite;
+      z-index: 1;
+    }
+
+    .orb:nth-child(1) {
+      top: 10%;
+      left: 10%;
+    }
+
+    .orb:nth-child(2) {
+      top: 70%;
+      left: 70%;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    @keyframes orb-move {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(30px, -30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 15;
+      transition: color 0.3s ease;
+    }
+
+    .cek-button {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .cek-button:hover {
+      background-color: #f1c40f;
+      color: #2c3e50;
+    }
+
+    .back-button:hover {
+      color: #f1c40f;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back button -->
+  <button class="back-button" onclick="window.location.href='3.html'">&#8592; back</button>
+
+  <div class="orb"></div>
+  <div class="orb"></div>
+
+  <div class="container">
+    <h1>Teorema Bilangan Prima</h1>
+    <p>Bilangan prima adalah bilangan yang lebih besar dari 1 dan hanya memiliki dua faktor yaitu 1 dan dirinya sendiri. Sebagai contoh, bilangan 2 adalah bilangan prima karena satu-satunya pembaginya adalah 1 dan 2. Demikian pula bilangan 5 yang hanya bisa dibagi oleh 1 dan 5.</p>
+
+    <h2>1. Definisi Bilangan Prima</h2>
+    <p>Bilangan prima adalah bilangan yang lebih besar dari 1 dan hanya memiliki dua faktor yaitu 1 dan dirinya sendiri. Sebagai contoh, bilangan 2 adalah bilangan prima karena satu-satunya pembaginya adalah 1 dan 2. Demikian pula bilangan 5 yang hanya bisa dibagi oleh 1 dan 5.</p>
+    <p>Bilangan yang tidak prima disebut komposit. Sebagai contoh, 6 adalah bilangan komposit karena bisa dibagi oleh 1, 2, 3, dan 6.</p>
+
+    <h2>2. Sifat Bilangan Prima</h2>
+    <ul>
+      <li>Unik: Hanya ada dua faktor yaitu 1 dan bilangan itu sendiri.</li>
+      <li>Bilangan Ganjil: Semua bilangan prima setelah 2 adalah bilangan ganjil.</li>
+      <li>Bilangan Terbesar: Tidak ada bilangan terbesar dalam deretan bilangan prima.</li>
+    </ul>
+
+    <h2>3. Teorema Fundamental Aritmatika</h2>
+    <p>Teorema ini menyatakan bahwa setiap bilangan bulat positif yang lebih besar dari 1 dapat dipresentasikan secara unik sebagai hasil perkalian bilangan-bilangan prima, dengan urutan perkalian yang tidak penting.</p>
+    <p>Contoh:</p>
+    <ul>
+      <li>30 = 2 × 3 × 5</li>
+      <li>84 = 2 × 2 × 3 × 7</li>
+    </ul>
+
+    <h2>4. Teorema Euclid tentang Keberadaan Bilangan Prima</h2>
+    <p>Teorema: Ada tak terhingga banyaknya bilangan prima.</p>
+    <p>Euclid membuktikan bahwa ada tak terhingga banyaknya bilangan prima dengan cara mengalikan semua bilangan prima yang ada, menambah 1, dan menghasilkan bilangan baru yang tidak bisa dibagi oleh bilangan prima yang ada.</p>
+
+    <h2>5. Uji Keprimaan</h2>
+    <p>Untuk menguji apakah suatu bilangan n adalah prima, kita hanya perlu memeriksa pembaginya hingga √n. Misalnya, untuk memeriksa apakah 29 adalah bilangan prima, kita hanya perlu memeriksa pembagi 2, 3, dan 5.</p>
+
+    <h2>6. Teorema-Torema tentang Bilangan Prima</h2>
+    <ul>
+      <li>Teorema Pembagian: Jika p adalah bilangan prima dan p membagi (a × b), maka p harus membagi salah satu dari a atau b.</li>
+      <li>Keprimaan Relatif: Jika dua bilangan a dan b tidak memiliki faktor prima yang sama selain 1, maka mereka adalah bilangan prima relatif atau coprime.</li>
+    </ul>
+
+    <h2>7. Aplikasi Bilangan Prima dalam Kriptografi</h2>
+    <p>Bilangan prima memiliki aplikasi penting dalam kriptografi, terutama dalam algoritma RSA yang digunakan untuk enkripsi dan dekripsi pesan dengan keamanan yang tinggi.</p>
+
+    <h2>8. Deret Bilangan Prima dan Pola-Pola Tertentu</h2>
+    <p>Teorema Bilangan Prima memberikan perkiraan jumlah bilangan prima yang lebih kecil dari x, yaitu π(x) ≈ x / ln(x).</p>
+
+    <h2>9. Bilangan Prima dalam Teori Bilangan Lainnya</h2>
+    <ul>
+      <li>Konjektur Goldbach: Setiap bilangan genap lebih besar dari 2 dapat dipresentasikan sebagai jumlah dua bilangan prima.</li>
+      <li>Bilangan Prima Berkembar: Pasangan bilangan prima yang memiliki selisih 2.</li>
+    </ul>
+
+    <h2>10. Metode Faktorisasi Bilangan Prima</h2>
+    <p>Faktorisasi bilangan besar menjadi bilangan prima sangat penting dalam matematika dan kriptografi, terutama dengan algoritma yang efisien dan canggih.</p>
+
+    <div class="footer">
+      <p>Ingin belajar lebih banyak? Kunjungi kami di <a href="index.html">Theo Math</a></p>
+    </div>
+    <button class="cek-button" onclick="window.location.href='cekPrime.html'">CEK</button>
+  </div>
+  
+  <div class="background-math">
+    <span style="top: 10%; left: 20%;">3.14</span>
+    <span style="top: 30%; left: 40%;">&#x221E;</span>
+    <span style="top: 50%; left: 10%;">x + y = z</span>
+    <span style="top: 70%; left: 50%;">&#x221A;25</span>
+    <span style="top: 20%; left: 70%;">e<sup>i&#x3C0;</sup> + 1 = 0</span>
+    <span style="top: 60%; left: 80%;">&#x3C3;</span>
+    <span style="top: 15%; left: 35%;">y = mx + b</span>
+    <span style="top: 45%; left: 65%;">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span>
+    <span style="top: 75%; left: 25%;">log<sub>10</sub>100</span>
+  </div>
+</body>
+</html>

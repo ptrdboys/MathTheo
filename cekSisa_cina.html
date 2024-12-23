@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sisa Cina Checker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #2c3e50, #34495e, #1abc9c);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(241, 196, 15, 0.7);
+        }
+
+        .input-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-section input {
+            font-size: 1rem;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #f1c40f;
+            color: #2c3e50;
+            width: calc(100% - 20px);
+        }
+
+        .submit-button {
+            background-color: #f1c40f;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+        .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 15;
+      transition: color 0.3s ease;
+    }
+
+    .cek-button {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 20px;
+    }
+
+        .submit-button:hover {
+            background-color: #e67e22;
+            transform: scale(1.1);
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #f1c40f;
+        }
+        
+    </style>
+</head>
+<body>
+     <!-- Back button -->
+  <button class="back-button" onclick="window.location.href='teorema_bilangan_prima.html'">&#8592; back</button>
+    <div class="container">
+        <h1>Teorema Sisa Cina</h1>
+        <p>Masukkan pasangan bilangan (a, m) dan bilangan bebas (b) untuk menyelesaikan teorema sisa cina </p>
+        <div class="input-section">
+            <input type="text" id="a" placeholder="Masukkan nilai a (dipisah koma, contoh: 3, 4, 5)">
+            <input type="text" id="m" placeholder="Masukkan nilai m (dipisah koma, contoh: 5, 7, 9)">
+            <input type="text" id="b" placeholder="Masukkan nilai b (contoh: 23)">
+        </div>
+        <button class="submit-button" onclick="solveChineseRemainder()">Cek</button>
+        <div id="result" class="result"></div>
+        <div class="footer">
+            <p>Ingin belajar lebih banyak? Kunjungi kami di <a href="index.html">Theo Math</a></p>
+          </div>
+          <button class="cek-button" onclick="window.location.href='soalSisa_cina.html'">SOAL</button>
+        </div>
+    </div>
+
+    <script>
+        function solveChineseRemainder() {
+            const a = document.getElementById('a').value.split(',').map(Number);
+            const m = document.getElementById('m').value.split(',').map(Number);
+            const b = parseInt(document.getElementById('b').value, 10);
+            const result = document.getElementById('result');
+
+            if (a.length !== m.length || a.some(isNaN) || m.some(isNaN) || isNaN(b)) {
+                result.innerHTML = "Input tidak valid. Pastikan formatnya benar dan nilai-nilai diisi.";
+                return;
+            }
+
+            let prod = m.reduce((acc, curr) => acc * curr, 1);
+            let x = 0;
+
+            for (let i = 0; i < m.length; i++) {
+                let Mi = prod / m[i];
+                x += a[i] * Mi * modInverse(Mi, m[i]);
+            }
+
+            x = ((x % prod) + prod) % prod; // Mengatasi hasil negatif
+            result.innerHTML = `Solusi untuk x: ${x}. Ini berlaku modulo ${prod}.`;
+        }
+
+        function modInverse(a, m) {
+            let m0 = m, x0 = 0, x1 = 1;
+            if (m === 1) return 0;
+            while (a > 1) {
+                let q = Math.floor(a / m);
+                let t = m;
+                m = a % m;
+                a = t;
+                t = x0;
+                x0 = x1 - q * x0;
+                x1 = t;
+            }
+            if (x1 < 0) x1 += m0;
+            return x1;
+        }
+    </script>
+</body>
+</html>

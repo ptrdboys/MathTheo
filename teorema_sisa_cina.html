@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Teorema Sisa Cina</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: radial-gradient(circle at 50% 50%, #2c3e50, #34495e, #1abc9c);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 50px 70px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #f1c40f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(241, 196, 15, 0.7);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 30px;
+      color: #f39c12;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      text-align: left;
+      margin: 0 auto;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ecf0f1;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #f1c40f;
+    }
+
+    .background-math {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .background-math span {
+      position: absolute;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.2);
+      animation: float 15s infinite;
+    }
+
+    .cek-button {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .cek-button:hover {
+      background-color: #f1c40f;
+      color: #2c3e50;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 15;
+      transition: color 0.3s ease;
+    }
+
+    .cek-button {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #f1c40f;
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .cek-button:hover {
+      background-color: #f1c40f;
+      color: #2c3e50;
+    }
+
+    .back-button:hover {
+      color: #f1c40f;
+    }
+  </style>
+</head>
+  <!-- Back button -->
+  <button class="back-button" onclick="window.location.href='4.html'">&#8592; back</button>
+<body>
+  <div class="container">
+    <h1>Teorema Sisa Cina</h1>
+    <p>Teorema Sisa Cina adalah sebuah metode dalam teori bilangan yang digunakan untuk menyelesaikan sistem persamaan modular dengan modulus yang saling prima. Metode ini berguna dalam berbagai bidang seperti matematika terapan, kriptografi, dan pemrograman.</p>
+
+    <h2>1. Pengertian Dasar</h2>
+    <p>Jika kita memiliki sistem persamaan modular:</p>
+    <ul>
+      <li><strong>x ≡ a₁ (mod m₁)</strong></li>
+      <li><strong>x ≡ a₂ (mod m₂)</strong></li>
+      <li>⋮</li>
+      <li><strong>x ≡ aₖ (mod mₖ)</strong></li>
+    </ul>
+    <p>Dan jika modulus-modulus \( m₁, m₂, \dots, mₖ \) saling prima (tidak memiliki faktor pembagi selain 1), maka terdapat solusi tunggal untuk \( x \) dalam ruang modulo \( M = m₁ × m₂ × ... × mₖ \).</p>
+
+    <h2>2. Langkah-Langkah Penyelesaian</h2>
+    <ol>
+      <li><strong>Hitung Nilai M:</strong> \( M = m₁ × m₂ × ... × mₖ \).</li>
+      <li><strong>Hitung Mᵢ:</strong> Untuk setiap \( i \), tentukan \( Mᵢ = M / mᵢ \).</li>
+      <li><strong>Temukan Invers Modular:</strong> Cari \( yᵢ \) sehingga \( Mᵢ yᵢ ≡ 1 (mod mᵢ) \).</li>
+      <li><strong>Hitung Solusi:</strong> Gunakan rumus:
+        <p><strong>x = Σ (aᵢ × Mᵢ × yᵢ) mod M</strong></p>
+      </li>
+    </ol>
+
+    <h2>3. Penjelasan Tambahan</h2>
+    <p>Untuk memahami langkah di atas, penting untuk mengetahui:</p>
+    <ul>
+      <li><strong>Modulus:</strong> Operasi modulo memberikan sisa hasil bagi.</li>
+      <li><strong>Saling Prima:</strong> Dua bilangan dikatakan saling prima jika tidak ada bilangan selain 1 yang menjadi pembagi keduanya.</li>
+      <li><strong>Invers Modular:</strong> Bilangan \( y \) yang memenuhi \( Mᵢ × y ≡ 1 (mod mᵢ) \).</li>
+    </ul>
+    <p>Dengan memahami konsep ini, siswa dapat menyelesaikan sistem persamaan modular secara sistematis.</p>
+
+    <div class="footer">
+      <p>Ingin belajar lebih banyak? Kunjungi kami di <a href="index.html">Theo Math</a></p>
+    </div>
+
+    <button class="cek-button" onclick="window.location.href='cekSisa_cina.html'">CEK</button>
+  </div>
+
+  <div class="background-math">
+    <span style="top: 10%; left: 20%;">3.14</span>
+    <span style="top: 30%; left: 40%;">&#x221E;</span>
+    <span style="top: 50%; left: 10%;">x + y = z</span>
+    <span style="top: 70%; left: 50%;">&#x221A;25</span>
+    <span style="top: 20%; left: 70%;">e<sup>i&#x3C0;</sup> + 1 = 0</span>
+    <span style="top: 60%; left: 80%;">&#x3C3;</span>
+    <span style="top: 15%; left: 35%;">y = mx + b</span>
+    <span style="top: 45%; left: 65%;">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span>
+    <span style="top: 75%; left: 25%;">log<sub>10</sub>100</span>
+  </div>
+</body>
+
+</html>
